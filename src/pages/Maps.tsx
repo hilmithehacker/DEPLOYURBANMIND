@@ -160,6 +160,8 @@ function parseQML(xml: string): QMLStyle | null {
   } catch (e) { console.error('QML Parse Error:', e); return null }
 }
 
+type Tab = 'compose' | 'layers' | 'inset' | 'export'
+
 export default function Maps() {
   const mapDivRef = useRef<HTMLDivElement>(null); const frameRef = useRef<HTMLDivElement>(null)
   const wrapRef = useRef<HTMLDivElement>(null); const mapInst = useRef<any>(null); const baseTile = useRef<any>(null)
@@ -326,7 +328,6 @@ export default function Maps() {
     const createStyle = (feature: any) => {
       const props = feature.properties || {}
       let fill = l.fillColor
-      let stroke = l.strokeColor
       if (l.classificationMode === 'categorized' && l.colorField) {
         fill = l.colorMap[String(props[l.colorField] ?? 'N/A')] || fill
       } else if (l.classificationMode === 'graduated' && l.graduatedField && l.colorMap) {

@@ -85,7 +85,7 @@ export interface MapLayer {
   categoryLabels: Record<string, string>
   // Point-specific
   pointRadius: number
-  pointSymbol: 'circle' | 'square' | 'triangle'
+  pointSymbol: PointSymbolType
   pointStrokeWidth: number
   pointOpacity: number
   // Labels
@@ -105,7 +105,6 @@ export interface MapLayer {
   outerStrokeColor: string
   outerStrokeWidth: number
   patternFill: PatternFill
-  pointSymbol: PointSymbolType
   // QML / metadata
   hasQml?: boolean
   featureCount?: number
